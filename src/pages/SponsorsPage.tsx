@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Typography, Box, Card, CardMedia, CardContent } from '@mui/material';
+import { Container, Grid, Typography, Card, CardMedia, CardContent } from '@mui/material';
 
 const SponsorsPage = () => {
   return (
