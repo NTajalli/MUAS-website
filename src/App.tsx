@@ -1,25 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './Layout';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';  // Import all pages
+import CompetitionPage from './pages/CompetitionPage';
+import ApplyPage from './pages/ApplyPage';
+import ProgressPage from './pages/ProgressPage';
+import ResourcesPage from './pages/ResourcesPage';
+import SponsorsPage from './pages/SponsorsPage';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+// Custom theme with red for primary headings
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#d32f2f',
+    },
+  },
+  typography: {
+    h1: {
+      color: '#d32f2f',
+    },
+    h2: {
+      color: '#d32f2f',
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Router>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<AboutPage />} />
+            <Route path="/competition" element={<CompetitionPage />} />
+            <Route path="/apply" element={<ApplyPage />} />
+            <Route path="/progress" element={<ProgressPage />} />
+            <Route path="/resources" element={<ResourcesPage />} />
+            <Route path="/sponsors" element={<SponsorsPage />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </ThemeProvider>
   );
 }
 
